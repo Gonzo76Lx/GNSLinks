@@ -1,0 +1,88 @@
+@{
+    var isAuth = User?.Identity?.IsAuthenticated == true;
+    var userName = isAuth && !string.IsNullOrEmpty(User?.Identity?.Name) ? User.Identity.Name : "Visitante";
+    var userInitial = !string.IsNullOrEmpty(userName) ? userName.Substring(0, 1).ToUpper() : "V";
+    var isITUser = isAuth && (
+        userName.Equals("UseriT", StringComparison.OrdinalIgnoreCase) ||
+        userName.EndsWith("UseriT", StringComparison.OrdinalIgnoreCase) ||
+        userName.EndsWith("Administrator", StringComparison.OrdinalIgnoreCase)
+    );
+}
+<!DOCTYPE html>
+<html lang="pt" data-theme="light">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - GNSLinks Portal</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/GNSLinks.styles.css" asp-append-version="true"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <div class="app-wrapper">
+        <!-- Top Navbar (AgenteRAgLocal Style) -->
+        <header class="top-navbar">
+            <div class="header-brand-wrapper">
+                <a class="brand-logo-link" asp-controller="Home" asp-action="Index">
+                    <div class="brand-icon">
+                        <i class="bi bi-link-45deg"></i>
+                    </div>
+                    <div class="brand-text-container">
+                        <span class="brand-title">GNSLinks</span>
+                        <span class="brand-badge">Dev Portal</span>
+                    </div>
+                </a>
+
+                <div class="status-indicator-badge ms-3">
+                    <span class="status-dot"></span>
+                    <span>Portal Ativo @(isITUser ? "(Acesso IT)" : "")</span>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="user-pill" title="Sessão Utilizador">
+                    <div class="user-avatar">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <span>@userName</span>
+                </div>
+
+                <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Alternar Tema Claro/Escuro" aria-label="Alternar Tema">
+                    <i class="bi bi-sun-fill sun-icon" style="display:none;"></i>
+                    <i class="bi bi-moon-stars-fill moon-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Page Content -->
+        <main role="main" class="main-content">
+            @RenderBody()
+        </main>
+
+        <!-- Notification Toast Container -->
+        <div id="toastContainer">
+            <div id="copyToast" class="app-toast" role="alert" aria-live="polite" aria-atomic="true">
+                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                <span id="copyToastMessage">Copiado para a área de transferência!</span>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-links">
+                <a asp-controller="Home" asp-action="Index"><i class="bi bi-house-door-fill me-1"></i> Início</a>
+                <a asp-controller="Home" asp-action="Privacy"><i class="bi bi-shield-lock-fill me-1"></i> Privacidade</a>
+            </div>
+            <div>GNSLinks Portal &copy; @DateTime.Now.Year - Gestão Integrada de Recursos &amp; Links</div>
+        </footer>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", false)
+</body>
+</html>

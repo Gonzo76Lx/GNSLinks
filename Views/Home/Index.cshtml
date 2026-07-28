@@ -1,0 +1,786 @@
+﻿@{
+    ViewData["Title"] = "Portal de Recursos & Links";
+    var isAuth = User?.Identity?.IsAuthenticated == true;
+    var isAdmin = isAuth && !string.IsNullOrEmpty(User?.Identity?.Name) && User.Identity.Name.EndsWith("Administrator", StringComparison.InvariantCultureIgnoreCase);
+}
+
+<div class="dashboard-container">
+    <!-- Controls Header: Search & Category Filter Pills -->
+    <div class="search-filter-wrapper">
+        <div class="search-box-container">
+            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="linkSearchInput" class="search-input" placeholder="Pesquisar por nome, URL, servidor ou comando (Pressione '/' para focar)..." autocomplete="off" />
+            <span class="search-shortcut">/</span>
+        </div>
+
+        <div class="filter-pills" id="filterPills">
+            <button type="button" class="filter-pill active" data-filter="all">
+                Todos os Links <span class="count" id="totalCount">(0)</span>
+            </button>
+            <button type="button" class="filter-pill" data-filter="varios">
+                Vários
+            </button>
+            <button type="button" class="filter-pill" data-filter="pca">
+                PCA / Unit4
+            </button>
+            <button type="button" class="filter-pill" data-filter="canais">
+                Canais
+            </button>
+            <button type="button" class="filter-pill" data-filter="servidores">
+                Servidores Úteis
+            </button>
+            <button type="button" class="filter-pill" data-filter="documentacao">
+                Documentação
+            </button>
+            <button type="button" class="filter-pill" data-filter="departamentais">
+                Departamentais
+            </button>
+            @if (isAdmin)
+            {
+                <button type="button" class="filter-pill" data-filter="admin">
+                    Administração
+                </button>
+                <button type="button" class="filter-pill" data-filter="docker">
+                    Docker
+                </button>
+            }
+        </div>
+    </div>
+
+    <!-- Cards Grid -->
+    
+<div class="modern-cards-grid" id="cardsGrid">
+
+        <div class="modern-card" data-category="varios" data-keywords="ask portal dashboard">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://ask.montepio.pt/dashboard" target="_blank" rel="noopener" class="mc-title">Ask - Portal</a>
+                <div class="mc-date">ask.montepio.pt</div>
+                
+                <div class="mc-desc">
+                    Acesso para Ask - Portal
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">ask</span> <span class="kw-tag">portal</span> <span class="kw-tag">dashboard</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="ask requests pedidos">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://ask.montepio.pt/saw/Requests" target="_blank" rel="noopener" class="mc-title">Ask - Requests</a>
+                <div class="mc-date">ask.montepio.pt</div>
+                
+                <div class="mc-desc">
+                    Acesso para Ask - Requests
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">ask</span> <span class="kw-tag">requests</span> <span class="kw-tag">pedidos</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="ficheiro registo ask melhorias corretivas excel sharepoint">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://montepio.sharepoint.com/:x:/r/sites/DocumentacaoDSI/Gesto%20ITSector/Plataformas%20Departamentais/Gest%C3%A3o%20de%20ASK%20-%20Departamentais/Gest%C3%A3o%20de%20asks_Departamentais.xlsx?d=w36c86d1265f0448b9d5dab3a4a546bbc&csf=1&web=1&e=grX0J1" target="_blank" rel="noopener" class="mc-title">Registo ASK / Melhorias / Corretivas</a>
+                <div class="mc-date">montepio.sharepoint.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Registo ASK / Melhorias / Corretivas
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">ficheiro</span> <span class="kw-tag">registo</span> <span class="kw-tag">ask</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="sharepoint montepio dsi">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://montepio.sharepoint.com/sites/DocumentacaoDSI/" target="_blank" rel="noopener" class="mc-title">Sharepoint - Montepio DSI</a>
+                <div class="mc-date">montepio.sharepoint.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Sharepoint - Montepio DSI
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">sharepoint</span> <span class="kw-tag">montepio</span> <span class="kw-tag">dsi</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="sharepoint itsector canais">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://montepio.sharepoint.com/sites/DocumentacaoDSI/Gesto%20ITSector/Forms/AllItems.aspx?ExplorerWindowUrl=%2Fsites%2FDocumentacaoDSI%2FGesto%20ITSector%2FCanaisb" target="_blank" rel="noopener" class="mc-title">Sharepoint - ITSector</a>
+                <div class="mc-date">montepio.sharepoint.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Sharepoint - ITSector
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">sharepoint</span> <span class="kw-tag">itsector</span> <span class="kw-tag">canais</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="webmail montepio outlook inbox email">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://outlook.office.com/mail/inbox/id/AAMkADEyMjJjM2Q0LWEzNzgtNDU2MS05NGFmLTdkNGQ4ODg0NzE4NQBGAAAAAADINXgEUqeHRYRXwKp4gv3ABwCQZs9WT%2F61QKNPdUyy9ISIAAAANlYeAAB4W5hVJOnaS5tsPrdguSfUAAHBlR5LAAA%3D" target="_blank" rel="noopener" class="mc-title">Webmail Montepio</a>
+                <div class="mc-date">outlook.office.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Webmail Montepio
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">webmail</span> <span class="kw-tag">montepio</span> <span class="kw-tag">outlook</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="formatador pedidos cancelamento g-santos">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://cfcancelamento.g-santos.net/" target="_blank" rel="noopener" class="mc-title">Formatador Pedidos Cancelamento</a>
+                <div class="mc-date">cfcancelamento.g-santos.net</div>
+                
+                <div class="mc-desc">
+                    Acesso para Formatador Pedidos Cancelamento
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">formatador</span> <span class="kw-tag">pedidos</span> <span class="kw-tag">cancelamento</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="backstage git infraestrutura montepio">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://backstage.platform.montepio.com" target="_blank" rel="noopener" class="mc-title">Criação Infraestrutura Git</a>
+                <div class="mc-date">backstage.platform.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Criação Infraestrutura Git
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">backstage</span> <span class="kw-tag">git</span> <span class="kw-tag">infraestrutura</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="power apps portal microsoft">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://make.powerapps.com" target="_blank" rel="noopener" class="mc-title">Portal Power Apps</a>
+                <div class="mc-date">make.powerapps.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Portal Power Apps
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">power</span> <span class="kw-tag">apps</span> <span class="kw-tag">portal</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="developer hub montepio backstage">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://backstage.platform.montepio.com/" target="_blank" rel="noopener" class="mc-title">M. Developer Hub</a>
+                <div class="mc-date">backstage.platform.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para M. Developer Hub
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">developer</span> <span class="kw-tag">hub</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="cam azure devops centro apificacao">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://dev.azure.com/Montepio/Development/_wiki/wikis/Development.wiki/4303/CAM-Centro-de-APIfica%C3%A7%C3%A3o-do-Montepio" target="_blank" rel="noopener" class="mc-title">CAM - Centro de APIficação</a>
+                <div class="mc-date">dev.azure.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para CAM - Centro de APIficação
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">cam</span> <span class="kw-tag">azure</span> <span class="kw-tag">devops</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="center for api apim dev montepio">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://portal-mservapimdev.montepio.com/" target="_blank" rel="noopener" class="mc-title">Center for API Montepio</a>
+                <div class="mc-date">portal-mservapimdev.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Center for API Montepio
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">center</span> <span class="kw-tag">for</span> <span class="kw-tag">api</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="varios" data-keywords="sonarqube portal validacao codigo">
+            <div class="mc-header">
+                <span class="mc-status running">VÁRIOS PORTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://sonarqube.platform.montepio.com/dashboard?id=AD0096-Promotores-WebExt" target="_blank" rel="noopener" class="mc-title">Portal Validação Sonarqube</a>
+                <div class="mc-date">sonarqube.platform.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Portal Validação Sonarqube
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">sonarqube</span> <span class="kw-tag">portal</span> <span class="kw-tag">validacao</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="pca" data-keywords="pca w12rdesvdd1">
+            <div class="mc-header">
+                <span class="mc-status complete">PCA & UNIT4</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://w12rdesvdd1:60001/" target="_blank" rel="noopener" class="mc-title">PCA Portal</a>
+                <div class="mc-date">w12rdesvdd1</div>
+                
+                <div class="mc-desc">
+                    Acesso para PCA Portal
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">pca</span> <span class="kw-tag">w12rdesvdd1</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="pca" data-keywords="unit4 itsector manage">
+            <div class="mc-header">
+                <span class="mc-status complete">PCA & UNIT4</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://ubw.unit4cloud.com/fr_aln_prod_web/">Unit4 Portal</a>
+                <div class="mc-date">secure-web.cisco.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Unit4 Portal
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">unit4</span> <span class="kw-tag">itsector</span> <span class="kw-tag">manage</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="net24 qualidade w3q3 bancomontepio">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://w3q3.bancomontepio.pt/" target="_blank" rel="noopener" class="mc-title">Net24 (Qualidade)</a>
+                <div class="mc-date">w3q3.bancomontepio.pt</div>
+                
+                <div class="mc-desc">
+                    Acesso para Net24 (Qualidade)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">net24</span> <span class="kw-tag">qualidade</span> <span class="kw-tag">w3q3</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="phone24 gestao qualidade ges24q">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://ges24q.montepio.com/gestao/index.jsp" target="_blank" rel="noopener" class="mc-title">Phone24 (Qualidade)</a>
+                <div class="mc-date">ges24q.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Phone24 (Qualidade)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">phone24</span> <span class="kw-tag">gestao</span> <span class="kw-tag">qualidade</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="netmovel24 mq montepio qualidade">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://mq.montepio.com/" target="_blank" rel="noopener" class="mc-title">Netmovel24 (Qualidade)</a>
+                <div class="mc-date">mq.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Netmovel24 (Qualidade)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">netmovel24</span> <span class="kw-tag">mq</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="net24 producao montepio pt">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://www.montepio.pt/" target="_blank" rel="noopener" class="mc-title">Net24 (Produção)</a>
+                <div class="mc-date">www.montepio.pt</div>
+                
+                <div class="mc-desc">
+                    Acesso para Net24 (Produção)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">net24</span> <span class="kw-tag">producao</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="phone24 gestao producao ges24">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://ges24.montepio.com/gestao/index.jsp" target="_blank" rel="noopener" class="mc-title">Phone24 (Produção)</a>
+                <div class="mc-date">ges24.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Phone24 (Produção)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">phone24</span> <span class="kw-tag">gestao</span> <span class="kw-tag">producao</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="canais" data-keywords="netmovel24 m montepio pt producao">
+            <div class="mc-header">
+                <span class="mc-status running">CANAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://m.montepio.pt/" target="_blank" rel="noopener" class="mc-title">Netmovel24 (Produção)</a>
+                <div class="mc-date">m.montepio.pt</div>
+                
+                <div class="mc-desc">
+                    Acesso para Netmovel24 (Produção)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">netmovel24</span> <span class="kw-tag">m</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="servidores" data-keywords="sessao explicativa montepio developer hub teams recap">
+            <div class="mc-header">
+                <span class="mc-status draft">SERVIDORES ÚTEIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://teams.microsoft.com/l/meetingrecap?driveId=b%21eLS6rmz4WEKDbTl9deWW3DSZImv4eZJMjC_XFXaUta7drAsGqx2oTbzgw_tcuoq8&driveItemId=01CODNWWDGEON2AAZKAJGL3BPZSWQVRILJ&sitePath=https%3A%2F%2Fmontepio-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Ffbgoncalves_bancomontepio_pt%2FEWYjm6ADKgJMvYX5laFYoWkBKGkacogM9UodKR0mgLnpiw&fileUrl=https%3A%2F%2Fmontepio-my.sharepoint.com%2F%3Av%3A%2Fg%2Fpersonal%2Ffbgoncalves_bancomontepio_pt%2FEWYjm6ADKgJMvYX5laFYoWkBKGkacogM9UodKR0mgLnpiw&iCalUid=040000008200E00074C5B7101A82E0080000000090E907F2776EDB01000000000000000010000000DD11579E2A50544CB74313925977276C&threadId=19%3Ameeting_MmQzYmEzZjYtZTUxNS00M2M3LWFlNGMtNTE4YzY5MTE3YjNm%40thread.v2&organizerId=32f73308-2e9e-4656-aec1-b9acb1f5f460&tenantId=0f172980-1261-4323-ab7a-c89b472843d7&callId=aebf626e-0fbe-410a-b059-722a47d9713a&threadType=Meeting&meetingType=Scheduled&subType=RecapSharingLink_RecapChiclet/" target="_blank" rel="noopener" class="mc-title">Sessão Explicativa - Developer Hub</a>
+                <div class="mc-date">teams.microsoft.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Sessão Explicativa - Developer Hub
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">sessao</span> <span class="kw-tag">explicativa</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="servidores" data-keywords="backstage guidelines pdf alberto documento">
+            <div class="mc-header">
+                <span class="mc-status draft">SERVIDORES ÚTEIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="/docs/Backstage Guidelines.pdf" target="_blank" rel="noopener" class="mc-title">Backstage Guidelines (PDF)</a>
+                <div class="mc-date">/docs/Backstage Guidelines.pdf</div>
+                
+                <div class="mc-desc">
+                    Acesso para Backstage Guidelines (PDF)
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">backstage</span> <span class="kw-tag">guidelines</span> <span class="kw-tag">pdf</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="departamentais" data-keywords="sgbo montepio com">
+            <div class="mc-header">
+                <span class="mc-status draft">DEPARTAMENTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://sgbo.montepio.com/" target="_blank" rel="noopener" class="mc-title">SGBO Portal</a>
+                <div class="mc-date">sgbo.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para SGBO Portal
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">sgbo</span> <span class="kw-tag">montepio</span> <span class="kw-tag">com</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="departamentais" data-keywords="gpr montepio gestao listagem aplicacoes">
+            <div class="mc-header">
+                <span class="mc-status draft">DEPARTAMENTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://gpr.montepio.com/aspx/Gestao/ListagemAplicacoes.aspx" target="_blank" rel="noopener" class="mc-title">GPR - Listagem Aplicações</a>
+                <div class="mc-date">gpr.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para GPR - Listagem Aplicações
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">gpr</span> <span class="kw-tag">montepio</span> <span class="kw-tag">gestao</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="departamentais" data-keywords="srvdom qualidade srvdomq montepio">
+            <div class="mc-header">
+                <span class="mc-status draft">DEPARTAMENTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://srvdomq.montepio.com/" target="_blank" rel="noopener" class="mc-title">SRVDOM - Qualidade</a>
+                <div class="mc-date">srvdomq.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para SRVDOM - Qualidade
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">srvdom</span> <span class="kw-tag">qualidade</span> <span class="kw-tag">srvdomq</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="departamentais" data-keywords="srvdom producao montepio">
+            <div class="mc-header">
+                <span class="mc-status draft">DEPARTAMENTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="http://srvdom.montepio.com/" target="_blank" rel="noopener" class="mc-title">SRVDOM - Produção</a>
+                <div class="mc-date">srvdom.montepio.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para SRVDOM - Produção
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">srvdom</span> <span class="kw-tag">producao</span> <span class="kw-tag">montepio</span>
+                </div>
+            </div>
+        </div>
+        <div class="modern-card" data-category="departamentais" data-keywords="arquitectura empresarial producao reporting sharepoint">
+            <div class="mc-header">
+                <span class="mc-status draft">DEPARTAMENTAIS</span>
+                <div class="mc-actions">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"></circle><circle cx="12" cy="5" r="1"></circle><circle cx="12" cy="19" r="1"></circle></svg>
+                </div>
+            </div>
+            <div class="mc-body">
+                <a href="https://montepio.sharepoint.com/sites/ae/SitePages/Reporting---Aplica%C3%A7%C3%B5es.aspx" target="_blank" rel="noopener" class="mc-title">Arquitectura Empresarial - Produção</a>
+                <div class="mc-date">montepio.sharepoint.com</div>
+                
+                <div class="mc-desc">
+                    Acesso para Arquitectura Empresarial - Produção
+                </div>
+                
+                <div class="mc-list-label">KEYWORDS</div>
+                <div class="mc-tags">
+                    <span class="kw-tag">arquitectura</span> <span class="kw-tag">empresarial</span> <span class="kw-tag">producao</span>
+                </div>
+            </div>
+        </div>
+@if (isAdmin)
+{
+          <!-- Servidores Admin Card -->
+            <div class="dash-card theme-grey" data-category="admin">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title">
+                        <div class="dash-card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                        </div>
+                        Servidores Privados
+                    </h2>
+                    <span class="dash-card-badge">Admin</span>
+                </div>
+                <div class="dash-card-body">
+                    <ul class="link-list">
+                        <li class="link-item" data-keywords="adamastor 192.168.88.200 proxmox">
+                            <a href="https://192.168.88.200:8006" target="_blank" rel="noopener" class="link-item-anchor">
+                                <span>Adamastor (192.168.88.200:8006)</span>
+                                <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="copy-item" data-keywords="ws2019 192.168.88.99 windows server">
+                        <span>WS2019 - 192.168.88.99</span>
+                        <button class="copy-btn" data-copy="192.168.88.99" title="Copiar IP">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copiar IP
+                        </button>
+                    </div>
+                    <div class="copy-item" data-keywords="sql server 2019 developer ubuntu linux 192.168.88.101">
+                        <span>SQL Server 2019 - 192.168.88.101</span>
+                        <button class="copy-btn" data-copy="192.168.88.101" title="Copiar IP">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            Copiar IP
+                        </button>
+                    </div>
+                    <ul class="link-list">
+                        <li class="link-item" data-keywords="rabbitmq 192.168.88.103:15672 messaging">
+                            <a href="https://192.168.88.103:15672" target="_blank" rel="noopener" class="link-item-anchor">
+                                <span>RabbitMQ (192.168.88.103:15672)</span>
+                                <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </li>
+                        <li class="link-item" data-keywords="windows 11 visual studio 2022 192.168.88.18">
+                            <a href="https://192.168.88.18" target="_blank" rel="noopener" class="link-item-anchor">
+                                <span>Win 11 - VS 2022 (192.168.88.18)</span>
+                                <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </li>
+                        <li class="link-item" data-keywords="pc itsector 192.168.88.22">
+                            <a href="https://192.168.88.22" target="_blank" rel="noopener" class="link-item-anchor">
+                                <span>PC ITSector (192.168.88.22)</span>
+                                <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </li>
+                        <li class="link-item" data-keywords="my support alten cisco track">
+                            <a href="https://secure-web.cisco.com/1TwQ6AFQrS9CW_9WGFYbC93edOwIai9OtyulJeiYMlljzAsuk_cY5M2pdn7F25jseXX39Cgu7nG-Mf9Ard7IWxc1UGD_RppjQjvPIRR8fnYcDFATUKKlOhSThzDbu6_jfuEaTbuyaoJydTlJTHd74VJ_9AM4y5nT0oSXZE3r8AreboRyIzWvwZ10AXuLN9r4l9Y1cQoNuOadtROkwotUBoNeONd2dFTOOc0pOV9PRQz4WbHHfphgb1519cRUh2Z7v_wJWjy3u8mhIViwIkwYYrxcFWEp_sydyQpZ1v6OSnKMFOtWia_6qdptRxMptsD2LGMIwARhj1ikehXH-ZfDgm6nyfzvyE8noQsYbZFh-P8boHiztJy71AnxWxNz2HsDimr4jtbIX--orPtPFV4qA4HgPg1OkAokmN_TNdwunTpSnkgOlTQcurFoOf_JtCl-5ONxSwu_d3OzMgovARIzRhPMY7GaaF66XEp766nw3dy2e7T9RqxIAoVh8J3VgD43EhSQnRfn47z4uUlhK6lFOFA/https%3A%2F%2Fitsector.us17.list-manage.com%2Ftrack%2Fclick%3Fu%3Db174137295272dfb706ee892c%26id%3D71b15537d0%26e%3Dbc6dfb0324" target="_blank" rel="noopener" class="link-item-anchor">
+                                <span>My Support - ALTEN</span>
+                                <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Docker Reference Card -->
+            <div class="dash-card theme-orange" data-category="docker">
+                <div class="dash-card-header">
+                    <h2 class="dash-card-title">
+                        <div class="dash-card-icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .5-.5h19.5a.5.5 0 0 1 .5.5v2.5z"></path><path d="M4 9.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3.5"></path></svg>
+                        </div>
+                        Comandos Docker
+                    </h2>
+                    <span class="dash-card-badge">Guia Rápido</span>
+                </div>
+                <div class="dash-card-body">
+                    <div class="code-block-wrapper" data-keywords="docker build scfapi dev dockerfile">
+                        <div class="code-block-header">
+                            <span>Build Image Command</span>
+                            <button class="copy-btn" data-copy='docker build -f "C:\Users\gnfsa\source\repos\Scf_Api\Scf_Api\Dockerfile" --force-rm -t scfapi:dev "C:\Users\gnfsa\source\repos\Scf_Api"' title="Copiar Comando">
+                                <svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copiar
+                            </button>
+                        </div>
+                        <pre class="code-block-content"><code>docker build -f "C:\Users\gnfsa\source\repos\Scf_Api\Scf_Api\Dockerfile" --force-rm -t scfapi:dev "C:\Users\gnfsa\source\repos\Scf_Api"</code></pre>
+                    </div>
+
+                    <div class="code-block-wrapper" data-keywords="docker run scfapi dev port 8080">
+                        <div class="code-block-header">
+                            <span>Run Container Command</span>
+                            <button class="copy-btn" data-copy="docker run -p 8080:8080 scfapi:dev" title="Copiar Comando">
+                                <svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copiar
+                            </button>
+                        </div>
+                        <pre class="code-block-content"><code>docker run -p 8080:8080 scfapi:dev</code></pre>
+                    </div>
+
+                    <div class="code-block-wrapper" data-keywords="docker images listar imagens">
+                        <div class="code-block-header">
+                            <span>List Images</span>
+                            <button class="copy-btn" data-copy="docker images" title="Copiar Comando">
+                                <svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copiar
+                            </button>
+                        </div>
+                        <pre class="code-block-content"><code>docker images</code></pre>
+                    </div>
+
+                    <div class="code-block-wrapper" data-keywords="docker system prune -a limpar sistema imagens">
+                        <div class="code-block-header">
+                            <span>System Prune (Clean Unused)</span>
+                            <button class="copy-btn" data-copy="docker system prune -a" title="Copiar Comando">
+                                <svg width="12" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                                Copiar
+                            </button>
+                        </div>
+                        <pre class="code-block-content"><code>docker system prune -a</code></pre>
+                    </div>
+
+                    <div class="code-block-explanation">
+                        <strong>Composição dos Parâmetros Docker:</strong>
+                        <ul style="margin: 0.5rem 0 0 1rem; padding: 0;">
+                            <li><code>-f</code>: Caminho específico do Dockerfile.</li>
+                            <li><code>--force-rm</code>: Remove contentores intermédios após o build.</li>
+                            <li><code>-t</code>: Tag do resultado (Ex: <code>scfapi:dev</code>).</li>
+                            <li><code>-p 8080:8080</code>: Mapeamento de portas (Host:Container).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Empty Search State -->
+    <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-state-icon">🔍</div>
+        <h3>Nenhum resultado encontrado</h3>
+        <p>Não foram encontrados links ou recursos correspondentes aos termos pesquisados.</p>
+    </div>
+</div>
