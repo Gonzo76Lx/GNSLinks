@@ -92,3 +92,4 @@ C:\Users\gnfsa\RiderProjects\GNSLinks\GNSLinks\obj\Debug\net9.0\GNSLinks.genrunt
 C:\Users\gnfsa\RiderProjects\GNSLinks\GNSLinks\obj\Debug\net9.0\ref\GNSLinks.dll
 C:\Users\gnfsa\RiderProjects\GNSLinks\GNSLinks\obj\Debug\net9.0\compressed\c0xlpbjj61-{0}-bnt6slz9bh-bnt6slz9bh.gz
 C:\Users\gnfsa\RiderProjects\GNSLinks\GNSLinks\obj\Debug\net9.0\compressed\d898z45s7i-{0}-sr9igdozq4-sr9igdozq4.gz
+C:\Users\gnfsa\RiderProjects\GNSLinks\GNSLinks\obj\Debug\net9.0\GNSLinks.sourcelink.json
