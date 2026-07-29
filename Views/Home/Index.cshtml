@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Portal de Recursos & Links";
     var isAuth = User?.Identity?.IsAuthenticated == true;
     var isAdmin = isAuth && !string.IsNullOrEmpty(User?.Identity?.Name) && User.Identity.Name.EndsWith("Administrator", StringComparison.InvariantCultureIgnoreCase);
@@ -356,7 +356,7 @@
                 </div>
             </div>
             <div class="mc-body">
-                <a href="https://ubw.unit4cloud.com/fr_aln_prod_web/">Unit4 Portal</a>
+                <a href="https://ubw.unit4cloud.com/fr_aln_prod_web/" target="_blank" rel="noopener" class="mc-title">Unit4 Portal</a>
                 <div class="mc-date">secure-web.cisco.com</div>
                 
                 <div class="mc-desc">
