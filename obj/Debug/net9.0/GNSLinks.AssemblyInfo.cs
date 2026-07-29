@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GNSLinks")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+de5a7f7ab3a90c48275d6129d63913180e1eda73")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5cdbca10783296714871fc8b2632d4f17487e5bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("GNSLinks")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GNSLinks")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
